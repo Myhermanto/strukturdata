@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cek Bilangan Ganjil atau Genap</title>
+</head>
+
+<body>
+    <form method="post">
+        <label for="bilangan">Masukkan bilangan bulat:</label><br>
+        <input type="number" id="bilangan" name="bilangan"><br><br>
+        <input type="submit" value="Cek">
+    </form>
+
+    <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Mendapatkan bilangan dari inputan form
+        $bilangan = $_POST['bilangan'] ?? null;
+
+        // Memastikan bilangan telah dimasukkan
+        if ($bilangan !== null) {
+            // Mengecek apakah bilangan genap atau ganjil
+            if ($bilangan % 2 == 0) {
+                echo "Bilangan $bilangan adalah genap.";
+            } else {
+                echo "Bilangan $bilangan adalah ganjil.";
+            }
+        } else {
+            echo "Silakan masukkan bilangan terlebih dahulu.";
+        }
+    }
+    ?>
+</body>
+
+</html>
