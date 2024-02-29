@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cek Kelulusan Mahasiswa</title>
+</head>
+
+<body>
+    <form method="post">
+        <label for="bilangan">Masukkan nama Mahasiswa:</label><br>
+        <input type="text" id="nama" name="nama"><br><br>
+
+        <label for="bilangan">Masukkan nilai:</label><br>
+        <input type="number" id="nilai" name="nilai"><br><br>
+
+        <input type="submit" value="Cek">
+    </form>
+
+    <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Mendapatkan bilangan dari inputan form
+        
+        $nama = $_POST['nama'] ?? null;
+        $nilai = $_POST['nilai'] ?? null;
+
+        // Memastikan bilangan telah dimasukkan
+        if ($nilai !== null) {
+            // Mengecek apakah bilangan genap atau ganjil
+            if ($nilai >= 70) {
+                echo "nama $nama
+                 nilai $nilai = Lulus";
+            } else {
+                echo "nama $nama
+                nilai $nilai = tidak Lulus";
+            }
+        } else {
+            echo "Silakan masukkan nama dan nilai";
+        }
+    }
+    ?>
+</body>
+
+</html>
